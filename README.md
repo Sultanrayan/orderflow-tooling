@@ -293,38 +293,6 @@ The suite is fully offline:
 
 ---
 
-## Project Structure
-
-```
-orderflow-tooling/
-├── README.md
-├── pyproject.toml
-├── .env.example
-├── .gitignore
-├── LICENSE
-│
-├── src/orderflow_ai/
-│   ├── ingestion/      # Layer 1: feeds, normalizer, ring buffer, timestamp sync
-│   ├── primitives/     # Layer 2: the 10 order flow primitives
-│   ├── patterns/       # Layer 3: 7 detectors plus the fallback scorer
-│   ├── context/        # Layer 4: structure, key levels, sessions, volatility
-│   ├── output/         # Layer 5: summarizer, optimizer, prompt, schema
-│   ├── ai/             # providers (openai, anthropic, ollama) and client
-│   ├── backtest/       # paper trading engine and metrics
-│   ├── storage/        # optional Redis caching
-│   ├── core/           # config, pipeline, models, timeframes
-│   └── cli.py          # orderflow command line
-│
-├── tests/              # offline suite: layers 1-5, pipeline, CLI, AI
-├── scripts/            # live_run.py, backtest.py, collect_data.py
-├── configs/            # default.yaml, binance.yaml, replay.yaml
-├── Docs/               # OrderflowEngineer.md specification
-├── show/               # banners and logos
-└── data/               # recorded ticks (gitignored)
-```
-
----
-
 ## Performance
 
 | Stage | Latency |
