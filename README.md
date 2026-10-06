@@ -331,38 +331,6 @@ Final payload: **0.2 KB** (down from 5.5 KB raw)
 
 ---
 
-## Roadmap
-
-```mermaid
-gantt
-    title OrderFlow AI Roadmap
-    dateFormat YYYY-MM-DD
-    section Phase 1
-    Data ingestion           :a1, 2026-01-01, 14d
-    Primitives               :a2, after a1, 21d
-    section Phase 2
-    Pattern detection        :b1, after a2, 21d
-    Context building         :b2, after b1, 14d
-    section Phase 3
-    AI output layer          :c1, after b2, 14d
-    Token optimization       :c2, after c1, 10d
-    section Phase 4
-    Backtest framework       :d1, after c2, 21d
-    Live deployment          :d2, after d1, 14d
-```
-
-- [x] Five-layer pipeline
-- [x] Ten core primitives
-- [x] Seven pattern detectors
-- [x] Token optimization
-- [x] Response validation
-- [ ] Multi-exchange aggregation
-- [ ] Fine-tuned local model
-- [ ] Web dashboard
-- [ ] Alert integrations (Telegram, Discord, Slack)
-
----
-
 ## Contributing
 
 1. Fork the repository
