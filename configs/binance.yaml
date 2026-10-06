@@ -1,0 +1,48 @@
+# Live Binance spot configuration.
+# Run with: python scripts/live_run.py --config configs/binance.yaml
+
+exchange:
+  name: binance
+  symbol: BTCUSDT
+  tick_size: 0.001
+  depth_levels: 20
+  price_precision: 2
+
+pipeline:
+  mode: live
+  timeframe: 1m
+  buffer_size: 20000
+  history_bars: 30
+  record_path: data/btcusdt-ticks.jsonl
+  replay_path: null
+
+primitives:
+  delta_ratio_threshold: 0.15
+  imbalance_ratio_threshold: 1.5
+  absorption_min_confidence: 60
+
+patterns:
+  min_confidence: 50
+  max_patterns: 5
+  max_age_bars: 3
+
+ai:
+  provider: openai
+  model: gpt-4o
+  temperature: 0.2
+  max_tokens: 300
+  base_url: null
+  api_key: null
+  timeout_seconds: 30
+  min_reward_risk: 1.5
+
+optimization:
+  tier: auto
+  compact_json: true
+  short_keys: true
+  drop_nulls: true
+  round_numbers: true
+  delta_encode: true
+  cache_static: true
+  max_patterns: 3
+  max_levels: 3

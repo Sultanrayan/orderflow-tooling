@@ -1,0 +1,49 @@
+# Default OrderFlow Engineer configuration.
+# Every section maps to a dataclass in `orderflow_ai.core.config`.
+# Values shown here are the built-in defaults.
+
+exchange:
+  name: binance
+  symbol: BTCUSDT
+  tick_size: 1.0 # minimum quantity increment
+  depth_levels: 20 # order book levels tracked per side
+  price_precision: 6 # decimals used when bucketing price levels
+
+pipeline:
+  mode: synthetic # synthetic | replay | live
+  timeframe: 1m
+  buffer_size: 10000 # ring buffer capacity for raw ticks
+  history_bars: 20 # closed bars kept for lookback calculations
+  record_path: null # when set, raw ticks are written as JSON lines
+  replay_path: null # source file when mode = replay
+
+primitives:
+  delta_ratio_threshold: 0.15
+  imbalance_ratio_threshold: 1.5
+  absorption_min_confidence: 60
+
+patterns:
+  min_confidence: 50
+  max_patterns: 5
+  max_age_bars: 3
+
+ai:
+  provider: openai # openai | anthropic | ollama
+  model: gpt-4o
+  temperature: 0.2
+  max_tokens: 300
+  base_url: null # provider default when null
+  api_key: null # falls back to the provider environment variable
+  timeout_seconds: 30
+  min_reward_risk: 1.5
+
+optimization:
+  tier: auto # auto | minimal | standard | full
+  compact_json: true
+  short_keys: true
+  drop_nulls: true
+  round_numbers: true
+  delta_encode: true
+  cache_static: true
+  max_patterns: 3 # patterns shipped in the payload
+  max_levels: 3 # support/resistance levels shipped per side
